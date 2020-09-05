@@ -1,0 +1,7 @@
+vendor
+ngrok
+.idea
+.env
+.vscode
+public/images/*
+public/voices/*

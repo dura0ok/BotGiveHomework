@@ -1,0 +1,85 @@
+{
+  "one_time": true,
+  "buttons": [
+    [
+      {
+        "action": {
+          "type": "text",
+          "payload": "{\"button\": \"3\"}",
+          "label": "!команды"
+        },
+        "color": "primary"
+      }
+    ],
+    [
+      {
+        "action": {
+          "type": "text",
+          "payload": "{\"button\": \"1\"}",
+          "label": "!дз"
+        },
+        "color": "positive"
+      }
+    ],
+    [
+      {
+        "action": {
+          "type": "text",
+          "payload": "{\"button\": \"1\"}",
+          "label": "!историядз"
+        },
+        "color": "positive"
+      }
+    ],
+    [
+      {
+        "action": {
+          "type": "text",
+          "payload": "{\"button\": \"1\"}",
+          "label": "!расписание"
+        },
+        "color": "positive"
+      }
+    ],
+    [
+      {
+        "action": {
+          "type": "text",
+          "payload": "{\"button\": \"1\"}",
+          "label": "!статус"
+        },
+        "color": "primary"
+      }
+    ],
+    [
+      {
+        "action": {
+          "type": "text",
+          "payload": "{\"button\": \"1\"}",
+          "label": "!рассылка"
+        },
+        "color": "primary"
+      }
+    ],
+    [
+      {
+        "action": {
+          "type": "text",
+          "payload": "{\"button\": \"1\"}",
+          "label": "!разослать"
+        },
+        "color": "negative"
+      }
+    ],
+    [
+      {
+        "action": {
+          "type": "text",
+          "payload": "{\"button\": \"1\"}",
+          "label": "!удалить"
+        },
+        "color": "negative"
+      }
+    ]
+  ]
+}

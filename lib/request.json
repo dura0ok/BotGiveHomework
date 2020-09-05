@@ -1,0 +1,19 @@
+{
+  "type": "message_new",
+  "object": {
+    "date": 1570947449,
+    "from_id": 156997408,
+    "id": 3404,
+    "out": 0,
+    "peer_id": 156997408,
+    "text": "!да 1 надату 27.10",
+    "conversation_message_id": 1800,
+    "fwd_messages": [],
+    "important": false,
+    "random_id": 0,
+    "attachments": [],
+    "is_hidden": false
+  },
+  "group_id": 176571052,
+  "secret": ""
+}
