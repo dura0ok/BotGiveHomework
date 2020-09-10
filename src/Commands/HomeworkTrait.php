@@ -114,11 +114,16 @@ trait HomeworkTrait
         return mb_strtoupper(mb_substr($string, 0, 1)) . mb_strtolower(mb_substr($string, 1));
     }
 
-    public function getHomework(bool $history = false): array
+    public function getHomework(bool $history = false, int $start=0, int $finish = 0): array
     {
         $endpoints = $this->getEndPoints($history);
         $begin = date('Y-m-d H:i:s', $endpoints['start']);
         $end = date('Y-m-d H:i:s', $endpoints['end']);
+        if ($start != 0 && $finish != 0) {
+            $begin = date('Y-m-d H:i:s', $start);
+            $end = date('Y-m-d H:i:s', $finish);
+        }
+
 
         $message = " \n _________________ \n";
         $smnt = DB::prepare('SELECT * FROM homework WHERE todate between ? AND ? ORDER BY todate');

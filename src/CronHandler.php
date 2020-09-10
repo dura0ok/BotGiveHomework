@@ -6,6 +6,7 @@ namespace App;
 
 use App\Commands\GiveHomeworkCommand;
 use App\Commands\HomeworkTrait;
+use Exception;
 use Friday14\Mailru\Cloud;
 use SplFileObject;
 use VK\Client\VKApiClient;
@@ -47,7 +48,11 @@ class CronHandler
                     'random_id' => mt_rand(1, 9999),
                     'message' => 'Привет, ' . $recipient['name'] . "! " . $message
                 ];
-                $this->vk->messages()->send($this->token, $params);
+                try {
+                    $this->vk->messages()->send($this->token, $params);
+                } catch(Exception $e){
+                    echo $e->getMessage()." || Ошибка при отправке сообщения пользователю: {$recipient['name']} || Ссылка на страницу https://vk.com/id{$recipient['user_id']} ";
+                }
             }
         }
         DB::run("delete from mailings order by id desc limit 1");
