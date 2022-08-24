@@ -59,18 +59,6 @@ class CronHandler
 
     }
 
-    function strip_param_from_url( $url ) {
-
-        $query = parse_url( $url, PHP_URL_QUERY );
-        parse_str( $query, $params );
-
-
-        $params['color'] = 1;
-
-
-        $query = http_build_query( $params );
-        return  explode( '?', $url )[0] . '?' . $query;
-    }
 
     public function attachments()
     {
