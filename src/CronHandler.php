@@ -55,8 +55,21 @@ class CronHandler
                 }
             }
         }
-        DB::run("delete from mailings order by id desc limit 1");
+            DB::run("delete from mailings order by id desc limit 1");
 
+    }
+
+    function strip_param_from_url( $url ) {
+
+        $query = parse_url( $url, PHP_URL_QUERY );
+        parse_str( $query, $params );
+
+
+        $params['color'] = 1;
+
+
+        $query = http_build_query( $params );
+        return  explode( '?', $url )[0] . '?' . $query;
     }
 
     public function attachments()
@@ -67,12 +80,16 @@ class CronHandler
             $heap = DB::run("SELECT * FROM heap")->fetchAll();
             foreach ($heap as $item) {
                 foreach (unserialize($item['attachments']) as $attach) {
-                    $imageName = md5(basename($attach));
-                    $extension = pathinfo(basename($attach), PATHINFO_EXTENSION);
+                    $attach_copy = strtok($attach, '?');
+                    $imageName = md5(basename($attach_copy));
+                    $extension = pathinfo(basename($attach_copy), PATHINFO_EXTENSION);
+
                     $imageName = $imageName.".".$extension;
                     $image = __DIR__ . '/../public/images/' . $imageName;
+
                     file_put_contents($image, file_get_contents($attach));
                     $link = $this->host."/public/images/".$imageName;
+
                     $cc = $this->vk->utils()->getShortLink($this->token, ['url' => $link]);
                     $text = $text . "\n" . $cc['short_url'];
                 }

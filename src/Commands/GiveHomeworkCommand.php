@@ -13,6 +13,7 @@ class GiveHomeworkCommand implements Command
     private $re = "/^\d{1,2}\.\d{1,2}\-\d{1,2}\.\d{1,2}$/";
     public function execute(array $object = []): array
     {
+        if(!isset($object["text"])) $object["text"] = "";
     	$endpoints = trim(str_replace('!дз', '', $object['text']));
         $message = "Вот ваше домашнее задание! \n _________________ \n";
         if(preg_match($this->re, $endpoints) == 0){
